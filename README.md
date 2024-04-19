@@ -42,3 +42,21 @@ To set up and run the project, follow these steps:
    ```bash
    npm run dev
    ```
+
+## Project Structure
+
+The project follows a standard structure:
+
+src/
+│
+├── pages/ # Next.js pages
+│ ├── index.js # Main page
+│ └── ... # Other pages
+│
+├── components/ # Reusable React components
+│ └── ... # Component files
+│
+├── store/ # Zustand state management
+│ └── ... # State management files
+│
+└── ... # Other project files and directories

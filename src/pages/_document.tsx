@@ -42,6 +42,7 @@ export default function MyDocument(
           fontFamily: cobaltTheme.typography.fontFamily,
           backgroundColor: cobaltTheme.palette.background.default,
           color: cobaltTheme.palette.text.primary,
+          minHeight: "100vh",
         }}
       >
         <Main />

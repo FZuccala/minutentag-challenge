@@ -11,6 +11,7 @@ import {
   QueryClientProvider,
 } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { Toaster } from 'sonner';
 //import Layout from "@/components/Layout";
 
 export default function MyApp(props: AppProps) {
@@ -29,6 +30,7 @@ export default function MyApp(props: AppProps) {
           <ThemeProvider theme={cobaltTheme}>
             <CssBaseline />
             <Component {...pageProps} />
+            <Toaster />
           </ThemeProvider>
         </AppCacheProvider>
       </HydrationBoundary>

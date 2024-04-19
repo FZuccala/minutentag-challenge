@@ -42,7 +42,7 @@ const FilterBlock = (props: Props) => {
     [filter]
   );
   return (
-    <Box my="24px">
+    <>
       <BlockTitle
         title="Drink Category"
         onClick={() => setFilter(EFilter.ALL)}
@@ -58,7 +58,7 @@ const FilterBlock = (props: Props) => {
           />
         ))}
       </StyledActionContainer>
-    </Box>
+    </>
   );
 };
 

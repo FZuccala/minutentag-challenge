@@ -1,19 +1,28 @@
-import { convertToDollars } from "@/utils/conversion";
+import { convertToDollars, intlPrice } from "@/utils/conversion";
 import { Box, styled, Typography, IconButton } from "@mui/material";
 import { LuPlus } from "react-icons/lu";
 import React from "react";
 import { IProduct } from "@/types/interfaces/Products";
+import { useRouter } from "next/router";
+
 const StyledCard = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   justifyContent: "center",
   alignItems: "center",
   backgroundColor: theme.palette.background.paper,
-  borderRadius: "12px, 32px, 12px, 12px",
+  borderRadius: "12px 32px 12px 12px",
   width: "100%",
-  maxWidth: "160px",
+  minWidth: "200px",
+  maxWidth: "300px",
   padding: "10px",
   boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.1)",
+  position: 'relative',
+  cursor: 'pointer',
+  transition: 'all 0.3s ease-in-out',
+  ':hover': {
+    transform: 'scale(1.05)'
+  }
 }));
 const StyledCardText = styled(Typography)(({ theme }) => ({
   fontSize: "16px",
@@ -29,26 +38,31 @@ const StyledCardFooter = styled(Box)({
 const StyledCardBtn = styled(IconButton)(({ theme }) => ({
   backgroundColor: theme.palette.colors.orange500,
   color: theme.palette.colors.white,
-  borderRadius: "8px, 0px, 8px, 0px",
+  borderRadius: "8px 0px 8px 0px",
+  position: 'absolute',
+  bottom: '0',
+  right: '0',
+  transition: 'all 0.3s ease-in-out',
+  ':hover': {
+    backgroundColor: theme.palette.colors.orange600,
+  }
 }));
 const StyledImage = styled("img")({
-  width: "100%",
+  height: '160px',
 });
 type Props = {
   product: IProduct;
 };
 
 const ProductCard = ({ product }: Props) => {
+  const router = useRouter();
   const { brand: name, price, image } = product;
-  const intlPrice = (cents: number) => {
-    const dollars = convertToDollars(cents);
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(dollars);
-  };
+  const handleClickCard = () => {
+    const route = `/${product.id}-${product.brand.replace(/\s/g, "-")}`;
+    router.push(route);
+  }
   return (
-    <StyledCard>
+    <StyledCard onClick={handleClickCard}>
       <StyledCardText variant={"h5"}>{name}</StyledCardText>
       <StyledImage src={`/assets/images${image}`} alt={name} />
       <StyledCardFooter>

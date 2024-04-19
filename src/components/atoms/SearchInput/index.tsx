@@ -13,6 +13,11 @@ const StyledTextField = styled(TextField)(({ theme }) => ({
   alignItems: "center",
   justifyContent: "flex-start",
   padding: "8px",
+  marginBottom: "12px",
+  transition: "all ease-in-out 1s",
+  ':focus-within': {
+    maxWidth: "unset",
+  },
   "& div": {
     width: "100%",
   },

@@ -1,9 +1,6 @@
 import React from "react";
 import { Stack, Typography, styled } from "@mui/material";
-const StyledContainer = styled(Stack)({
-  margin: "20px 0 24px 0",
-  padding: "0 12px",
-});
+
 const StyledTitle = styled(Typography)(({ theme }) => ({
   color: theme.palette.primary.contrastText,
   fontSize: "24px",
@@ -20,10 +17,10 @@ type Props = {
 
 const Greeting = ({ name }: Props) => {
   return (
-    <StyledContainer>
+    <Stack>
       <StyledSubTitle variant="h3">Hi Mr. {name},</StyledSubTitle>
       <StyledTitle variant="h1">Welcome Back!</StyledTitle>
-    </StyledContainer>
+    </Stack>
   );
 };
 

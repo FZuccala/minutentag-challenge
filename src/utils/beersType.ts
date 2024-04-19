@@ -1,0 +1,23 @@
+const BEER_TYPES = [
+  'Ale',
+  'Lager',
+  'Stout',
+  'IPA',
+  'Pilsner',
+  'Porter',
+  'Sour',
+  'Wheat',
+  'Pale Ale',
+  'Bock',
+  'Malt',
+  'Cider',
+  'Mead',
+  'Sake',
+  'Kombucha',
+  'Hard Seltzer',
+  'Ginger Beer',
+  'Root Beer',
+  'Non-Alcoholic',
+  'Other',
+];
+export default BEER_TYPES;

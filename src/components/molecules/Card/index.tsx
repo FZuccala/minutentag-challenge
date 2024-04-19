@@ -12,9 +12,8 @@ const StyledCard = styled(Box)(({ theme }) => ({
   alignItems: "center",
   backgroundColor: theme.palette.background.paper,
   borderRadius: "12px 32px 12px 12px",
-  width: "100%",
-  minWidth: "150px",
-  maxWidth: "300px",
+  width: "150px",
+  maxWidth: "240px",
   padding: "10px",
   boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.1)",
   position: 'relative',
@@ -23,7 +22,9 @@ const StyledCard = styled(Box)(({ theme }) => ({
   ':hover': {
     transform: 'scale(1.05)'
   },
-
+  [theme.breakpoints.up('md')]: {
+    width: "100%",
+  }
 }));
 const StyledCardText = styled(Typography)(({ theme }) => ({
   fontSize: "16px",

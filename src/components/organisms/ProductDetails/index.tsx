@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import ProductDetailsHeader from '@/components/molecules/ProductDetailHeader'
 import { IProduct } from '@/types/interfaces/Products'
 import { IStockPrice } from '@/types/interfaces/StockPrice'
-import { Box, styled } from '@mui/material';
+import { Box, Stack, styled } from '@mui/material';
 import { useGlobalStore } from '@/store/global'
 import ProductDetailsCard from '@/components/molecules/ProductDetailsCard'
 
@@ -14,13 +14,15 @@ const StyledContainer = styled(Box)({
   flexDirection: 'column',
   justifyContent: 'space-between',
   minHeight: '100vh',
+  paddingBottom: '72px',
+  overflowY: 'auto',
 })
 const StyledImageContainer = styled(Box)(({ theme }) => ({
     width: '100%',
     position: 'relative',
     height: '150px',
-    maxWidth: '60px',
-    margin: '0 auto',
+    display: 'flex',
+    justifyContent: 'center',
     marginBottom: '16px',
     [theme.breakpoints.up('sm')]: {
         height: '300px',
@@ -46,11 +48,13 @@ const ProductDetailsOrganism = ({
     return (
     <StyledContainer>
       <ProductDetailsHeader />
+      <Stack direction="row" justifyContent="center">
         <StyledImageContainer>
-        <StyledImage 
-      src={`/assets/images${product.image}`} 
-      alt={product.brand}/>
+          <StyledImage 
+            src={`/assets/images${product.image}`} 
+            alt={product.brand}/>
         </StyledImageContainer>
+      </Stack>
       <ProductDetailsCard />
     </StyledContainer>
   )

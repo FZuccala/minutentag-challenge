@@ -13,7 +13,7 @@ const StyledCard = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
   borderRadius: "12px 32px 12px 12px",
   width: "100%",
-  minWidth: "200px",
+  minWidth: "150px",
   maxWidth: "300px",
   padding: "10px",
   boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.1)",
@@ -22,7 +22,8 @@ const StyledCard = styled(Box)(({ theme }) => ({
   transition: 'all 0.3s ease-in-out',
   ':hover': {
     transform: 'scale(1.05)'
-  }
+  },
+
 }));
 const StyledCardText = styled(Typography)(({ theme }) => ({
   fontSize: "16px",
@@ -48,7 +49,8 @@ const StyledCardBtn = styled(IconButton)(({ theme }) => ({
   }
 }));
 const StyledImage = styled("img")({
-  height: '160px',
+  height: '140px',
+  objectFit: 'cover',
 });
 type Props = {
   product: IProduct;

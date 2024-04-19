@@ -5,6 +5,8 @@ import CustomChip from '@/components/atoms/CustomChip';
 import TextTruncate from '@/components/atoms/TextTruncate';
 import useWindowSize from '@/hooks/useWindowSize';
 import Confetti from 'react-confetti'
+import { toast } from 'sonner';
+
 const StyledBrand = styled(Typography)(({ theme }) => ({
   color: theme.palette.text.primary,
   fontSize: '24x',
@@ -48,13 +50,18 @@ type Props = {};
 
 const ProductDetailsCard = (props: Props) => {
     const {width, height} = useWindowSize();
-  const { selectedProduct, selectedSku, setSelectedSku, getProductPrice, getProductStock, isAddToCart, setIsAddToCart } = useGlobalStore();
+  const { selectedProduct, selectedSku, setSelectedSku, getProductPrice, getProductStock, isAddToCart, setIsAddToCart,  } = useGlobalStore();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const handleClickChip = (sku: string) => {
     setSelectedSku(sku);
   };
   const handleAddToCart = () => {
+    const stock = getProductStock(selectedSku);
+    if (stock === 0) {
+      toast.error('Out of stock');
+      return;
+    }
     setIsAddToCart(true);
     setTimeout(() => {
         setIsAddToCart(false);

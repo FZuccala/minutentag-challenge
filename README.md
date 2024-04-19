@@ -50,7 +50,7 @@ The project follows a standard structure:
 src/
 │
 ├── pages/ # Next.js pages
-│ ├── index.js # Main page
+│ ├── index.tsx # Main page
 │ └── ... # Other pages
 │
 ├── components/ # Reusable React components

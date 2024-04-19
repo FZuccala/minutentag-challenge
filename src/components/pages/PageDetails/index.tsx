@@ -35,7 +35,7 @@ const StyledBtnFilled = styled(Button)(({ theme }) => ({
 }))
 const DetailsPage = (props: Props) => {
     const router = useRouter()
-    const { setIsAddToCart } = useGlobalStore()
+    const { setIsAddToCart, getProductStock, selectedSku } = useGlobalStore()
     const { id } = router.query
     const uniqueId = (id as string)?.split('-')?.[0]
     const { data: product, isError } = useQuery({
@@ -52,6 +52,11 @@ const DetailsPage = (props: Props) => {
     useErrorNotification({ isError, message: 'Error fetching product details' })
     
     const handleAddToCart = () => {
+      const stock = getProductStock(selectedSku);
+      if (stock === 0) {
+        toast.error('Out of stock');
+        return;
+      }
         setIsAddToCart(true)
         toast.success('Product added to cart');
         setTimeout(() => {
